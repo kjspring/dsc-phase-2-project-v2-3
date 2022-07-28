@@ -124,26 +124,24 @@ M2 has many more features than M1 and utulizes the zipcode dummy variables.
 ### Model 3
 M3 builds on M1 by adding interaction effects to the main effects. It also removes `sqft_above` as a predictor variable. Interaction effects occur when the effect of one predictor variable depends on the value of another variable. For example, condition of a home may be dependent on the age of the home. There may be a dependency between the square feet of living space and the number of bathrooms.
 
-## Regression Results
+## Statistics used to compare models
 
-### Statistics
-
-#### Adjusted R-squared
+### Adjusted R-squared
 R-squared is a statistical measurement of how close the observed data are to the regression line. It tells us if the model has can explain the variance seen in the data. Adjusted R-squared is similar to R-squared but it takes into account the number of independent variables used in the model as R-squared has a tendency to increase each time a new variable is added to the model. R-squared range from 0 to 1 with the higher the value, the more the model explains the variance.
 
 ![R-squared](img/R-squared.png)
 
-#### Prediction interval
+### Prediction interval
 Given specific values of independent variables, a prediction interval is a range a new single observation is likely to be. the smaller the prediction interval, the lower the range the new predicted value may fall, and thus the more confident the predicted value will be.
 
 ![Prediction interval equation](img/PI.png)
 
-#### Root Mean Squared Error (RMSE)
+### Root Mean Squared Error (RMSE)
 RMSE is the square-root of the  average squared difference between the estimated values and the actual value. RMSE is a measure of the mean error rate of a regression model that penalizes large errors. Larger errors between the predicted value and the actual observed value are given more weight and penalize the model. The smaller the RMSE score the better the model explains the data.
 
 ![Root Mean Squared Error equation](img/RMSE.png)
 
-#### 
+## Regression Results
 
 ![Regression results](img/regression-results.png)
 
@@ -155,7 +153,9 @@ The p-values indicate that each of the variables chosen has a statistical signif
 For every 1 unit increase in the log transformed living squared feet value, there is a 0.58 mean change in the predicted sale price of the home. There is a 0.22 mean change in the predicted sale price for every unit increase of the grade of a house. Interestingly, the area of the space above the home is penalized. This may be due to multicolinearity between the sqft_living and sqft_above. RMSE of M1 is 
 
 ### M2
-R-squared and adjusted R-squared is 0.89 for M2. This is tremendous improvement over M1. There are many more predictor variables used in M2. M2 has 80 independent variables used to explain `price`. This $R^2$ score is very good for a model that will be used for prediciton.
+R-squared and adjusted R-squared is 0.89 for M2. This is tremendous improvement over M1. There are many more predictor variables used in M2. M2 has 80 independent variables used to explain `price`. This R-squared score is very good for a model that will be used for prediciton.
+
+M2 has the lowest predictive intervals. The smaller the predictive interval the more confidence the true sale price is in that region. M1 and M2 had resonably similar prediction intervals and twice the value as M2.
 
 M2 is almost half the RMSE score of M1 and M2 indicating it produces less error between the actual and predicted values. 
 
@@ -165,8 +165,9 @@ R-squared and adjusted R-squared for M3 is 0.63. This is an improvement over M1 
 
 RMSE is similar to M1 and less than M2.
 
-## Conclusion
+## Conclusion and Recommendations
+M2 is the best model as compared to M1 and M3 because it has a higher adjusted R-squared, smaller RMSE, and smaller prediciton intervals.
 
+This model could be improved upon by adding more data additional features, such as crime rate in the geographic location, the zoned school ranking, and time on the market. The GPS coordinates of the sold house could be used to collect the first two of these variables. The Multiple Listing Service may be a source for more recent data and on how long a house was on the market from day of listing to closing date. 
 
-
-
+Anther source of data could be in the internal data of our brokerage client. They possibly have data of properties they were involved with such as the data of the asking and bidding price of the property. We could use this data to identify homes that were under listed by identifying properties that had offers substantially more than the asking price. Conversly, properties that were over-listed by setting an asking price that was higher than the final accepted bid offer.
