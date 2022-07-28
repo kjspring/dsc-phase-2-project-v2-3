@@ -114,7 +114,7 @@ M1 is the baseline model and it was chosen from the variables correlated with sa
 
 ![Correlation Heatmap](img/corr-heatmap.png)
 
-Independent variables correlated with `price` with Pearson's correlation (ρ) greater than 0.6  are `sqft_living`, `sqft_above`, `grade`. As the heatmap shows, `sqft_living` and `sqft_above` are highly correlated with each other (ρ = 0.88) so this will likely create multicollinearity.
+Independent variables correlated with `price` with Pearson's correlation (r) greater than 0.6  are `sqft_living`, `sqft_above`, `grade`. As the heatmap shows, `sqft_living` and `sqft_above` are highly correlated with each other (r = 0.88) so this will likely create multicollinearity.
 
 ### Model 2 (M2)
 M2 uses an automated stepwise regression strategy.  All the variables are fed into the model fitted. The predictor variable with highest p-value is removed if the p-value is greater than 0.05. This is repeated until all the p-values of the predictor variables are less than 0.05. 
@@ -126,14 +126,44 @@ M3 builds on M1 by adding interaction effects to the main effects. It also remov
 
 ## Regression Results
 
+### Statistics
+
+#### Adjusted R-squared
+R-squared is a statistical measurement of how close the observed data are to the regression line. It tells us if the model has can explain the variance seen in the data. Adjusted R-squared is similar to R-squared but it takes into account the number of independent variables used in the model as R-squared has a tendency to increase each time a new variable is added to the model. R-squared range from 0 to 1 with the higher the value, the more the model explains the variance.
+
+![R-squared](img/r-squared.png)
+
+#### Prediction interval
+Given specific values of independent variables, a prediction interval is a range a new single observation is likely to be. the smaller the prediction interval, the lower the range the new predicted value may fall, and thus the more confident the predicted value will be.
+
+![Prediction interval equation](img/PI.png)
+
+#### Root Mean Squared Error (RMSE)
+RMSE is the square-root of the  average squared difference between the estimated values and the actual value. RMSE is a measure of the mean error rate of a regression model that penalizes large errors. Larger errors between the predicted value and the actual observed value are given more weight and penalize the model. The smaller the RMSE score the better the model explains the data.
+
+![Root Mean Squared Error equation](img/RMSE.png)
+
+#### 
+
+![Regression results](img/regression-results.png)
+
 ### M1
 The p-values indicate that each of the variables chosen has a statistical significant relationship with the dependent variable, but the r-squared value is low at 0.55. For a predictive model the R-squared needs to be higher. The function of M1 would be:
 
 ![Model 1 linear equation](img/M1-eq.PNG)
 
-For every 1 unit increase in the log transformed living squared feet value, there is a 0.58 mean change in the predicted sale price of the home. There is a 0.22 mean change in the predicted sale price for every unit increase of the grade of a house. Interestingly, the area of the space above the home is penalized. This may be due to multicolinearity between the sqft_living and sqft_above.
+For every 1 unit increase in the log transformed living squared feet value, there is a 0.58 mean change in the predicted sale price of the home. There is a 0.22 mean change in the predicted sale price for every unit increase of the grade of a house. Interestingly, the area of the space above the home is penalized. This may be due to multicolinearity between the sqft_living and sqft_above. RMSE of M1 is 
 
-The residual plot has a random pattern so there is homoskedasticity. The QQ-plot of the residuals indicate that they are normally distributed.
+### M2
+R-squared and adjusted R-squared is 0.89 for M2. This is tremendous improvement over M1. There are many more predictor variables used in M2. M2 has 80 independent variables used to explain `price`. This $R^2$ score is very good for a model that will be used for prediciton.
+
+M2 is almost half the RMSE score of M1 and M2 indicating it produces less error between the actual and predicted values. 
+
+### M3
+
+R-squared and adjusted R-squared for M3 is 0.63. This is an improvement over M1 but is worse than M2. The interaction effects between some variables does seem to help increase R-squared.
+
+RMSE is similar to M1 and less than M2.
 
 ## Conclusion
 
