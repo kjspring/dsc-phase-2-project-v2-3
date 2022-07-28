@@ -171,3 +171,9 @@ M2 is the best model as compared to M1 and M3 because it has a higher adjusted R
 This model could be improved upon by adding more data additional features, such as crime rate in the geographic location, the zoned school ranking, and time on the market. The GPS coordinates of the sold house could be used to collect the first two of these variables. The Multiple Listing Service may be a source for more recent data and on how long a house was on the market from day of listing to closing date. 
 
 Anther source of data could be in the internal data of our brokerage client. They possibly have data of properties they were involved with such as the data of the asking and bidding price of the property. We could use this data to identify homes that were under listed by identifying properties that had offers substantially more than the asking price. Conversly, properties that were over-listed by setting an asking price that was higher than the final accepted bid offer.
+
+## Summary
+- Model 2 is the best model to continue with as it has the best predictive capabilities.
+- Model 2 could be used as a prototype for a dashboard the client can use to a range for a asking price.
+- Gather more data and variables to improve the model's predictive power
+- Communicate with client about internal data that can be used to train the model
