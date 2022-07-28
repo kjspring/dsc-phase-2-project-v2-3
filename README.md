@@ -48,6 +48,8 @@ This project uses the [King County House Sales dataset](https://www.kaggle.com/h
 
 ### Data Cleanup
 
+The median house sold in King County, WA between 2014 to 2015 was for \$450,000. The median house sold was 1910 square feet, 3 bedroom, 2.25 bathrooms, and 47 years old. The home sale price range was \\$78,000 and to \\$7,700,000.
+
 #### Missing Data
 
 The data in the `waterfront`, `view`, and `yr_renovated` had `NaN` values. There are placeholder values in `yr_renovated` and `sqft_basement`. `yr_renovated` has 0 for over 95% of values which means the property was not renovated. `sqft_basement` has `?` for about 2% of its values.
@@ -103,7 +105,7 @@ For regression analysis, the catagorical data needs to be in numerical format so
     - Used [dummy variables](https://en.wikipedia.org/wiki/Dummy_variable_(statistics))
 
 #### Outliers
-An obvious outlier was found that I believe was a data entry error. A property is listed as having 33  bedrooms but only having 1,620 square feet in size. I edited this observation to 3.
+An obvious outlier was found that I believe was a data entry error. A property is listed as having 33  bedrooms but only having 1,620 square feet in size. I edited this observation to 3 to match the median number of bedrooms in the dataset.
 
 ## Modeling
 
