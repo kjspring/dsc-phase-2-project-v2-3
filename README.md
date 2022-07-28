@@ -110,7 +110,7 @@ An obvious outlier was found that I believe was a data entry error. A property i
 ### Model 1 (M1)
 M1 is the baseline model and it was chosen from the variables correlated with sales price of a house.
 
-![Correlation Heatmap](img/corr-heat.png)
+![Correlation Heatmap](img/corr-heatmap.png)
 
 ### Model 2
 
