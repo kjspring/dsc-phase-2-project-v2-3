@@ -39,8 +39,8 @@ The data in the `waterfront`, `view`, and `yr_renovated` had `NaN` values. There
     - `yr_renovated` has `0` for missing or unknown values.
     - `sqft_basement` has `?` for missing or unknown values.
 
-#### Re-coding variable
-For regression analysis, the catagorical data need to be in numerical format so they were re-coded to maintain their binary, ordinal, and count information.
+### Encoding Variables
+For regression analysis, the catagorical data needs to be in numerical format so catagorical variables were encoded to to meet this requirement but still maintain their binary, ordinal, and count information.
 
 - `condition`
     - Ordinal categorical variable
@@ -70,19 +70,24 @@ For regression analysis, the catagorical data need to be in numerical format so 
         -  `0` is the most common value with over 95% of values.
         - if never renovated then subtract from `yr_built`
     - Drop `yr_renovated`
+- `zipcod`
+    - Used [dummy variables](https://en.wikipedia.org/wiki/Dummy_variable_(statistics))
 
 #### Outliers
 An obvious outlier was found that I believe was a data entry error. A property is listed as having 33  bedrooms but only having 1,620 square feet in size. I edited this observation to 3.
 
 ## Modeling
 
-### Model 1
+### Model 1 (M1)
+M1 is the baseline model and it was chosen from the variables correlated with sales price of a house.
 
+![](img/corr-heat.pngg)
 
 ### Model 2
 
 
 ### Model 3
+
 
 ## Regression Results
 
