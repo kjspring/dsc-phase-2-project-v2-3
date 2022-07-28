@@ -129,7 +129,7 @@ M3 builds on M1 by adding interaction effects to the main effects. It also remov
 ### M1
 The p-values indicate that each of the variables chosen has a statistical significant relationship with the dependent variable, but the r-squared value is low at 0.55. For a predictive model the R-squared needs to be higher. The function of M1 would be:
 
-![Model 1 linear equation](img/M1-eq.png)
+![Model 1 linear equation](img/M1-eq.PNG)
 
 For every 1 unit increase in the log transformed living squared feet value, there is a 0.58 mean change in the predicted sale price of the home. There is a 0.22 mean change in the predicted sale price for every unit increase of the grade of a house. Interestingly, the area of the space above the home is penalized. This may be due to multicolinearity between the sqft_living and sqft_above.
 
