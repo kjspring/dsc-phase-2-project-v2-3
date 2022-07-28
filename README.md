@@ -1,9 +1,11 @@
 # Home Price Prediciton using Linear Regression
 
 ## Overview
-Linear regression is one of the most commonly used methods for predictive modeling. It fits a line to find the best fit among the data. This project's goal is to predict the sales price of of a home based on the features of the home. Ordinary least squares linear regression minimizes the sum of the squared difference between the observed dependent variable and the predicted response to estimate the coefficients to build the linear equation.
+The project's goal is to predict the sales price of a home in King County, WA based on the features of the home. One way to most common method to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value, denoted as y-hat.
 
 ![Linear Equation](img/linear-eq.png)
+
+This project will use a dataset of home sales and design three linear regression models. The models will be compared and the best model will be used for a backend function for a dashboard to predict the sales range for a home.
 
 ## Business Problem
 
@@ -11,11 +13,38 @@ Bon Jovi Real Estate Advisors is a residential real estate broker in King County
 
 ### Stakeholders
 - President and Managing Director of Bon Jovi Real Estate Advisors
-- Bon Jovi real estate agents
+- Bon Jovi real estate agents that will use the model for price predictions
 
 ## The Data
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this repository. The description of the column names can be found in `column_names.md` in the same folder.
+This project uses the [King County House Sales dataset](https://www.kaggle.com/harlfoxem/housesalesprediction), which can be found as  `kc_house_data.csv` in the data folder in this repository. The description of the column names can be found in `column_names.md` in the same folder.
+
+## Variable Names and Descriptions for King County Data Set
+* `id` - Unique identifier for a house
+* `date` - Date house was sold
+* `price` - Sale price (prediction target)
+* `bedrooms` - Number of bedrooms
+* `bathrooms` - Number of bathrooms
+* `sqft_living` - Square footage of living space in the home
+* `sqft_lot` - Square footage of the lot
+* `floors` - Number of floors (levels) in house
+* `waterfront` - Whether the house is on a waterfront
+  * Includes Duwamish, Elliott Bay, Puget Sound, Lake Union, Ship Canal, Lake Washington, Lake Sammamish, other lake, and river/slough waterfronts
+* `view` - Quality of view from house
+  * Includes views of Mt. Rainier, Olympics, Cascades, Territorial, Seattle Skyline, Puget Sound, Lake Washington, Lake Sammamish, small lake / river / creek, and other
+* `condition` - How good the overall condition of the house is. Related to maintenance of house.
+  * See the [King County Assessor Website](https://info.kingcounty.gov/assessor/esales/Glossary.aspx?type=r) for further explanation of each condition code
+* `grade` - Overall grade of the house. Related to the construction and design of the house.
+  * See the [King County Assessor Website](https://info.kingcounty.gov/assessor/esales/Glossary.aspx?type=r) for further explanation of each building grade code
+* `sqft_above` - Square footage of house apart from basement
+* `sqft_basement` - Square footage of the basement
+* `yr_built` - Year when house was built
+* `yr_renovated` - Year when house was renovated
+* `zipcode` - ZIP Code used by the United States Postal Service
+* `lat` - Latitude coordinate
+* `long` - Longitude coordinate
+* `sqft_living15` - The square footage of interior housing living space for the nearest 15 neighbors
+* `sqft_lot15` - The square footage of the land lots of the nearest 15 neighbors
 
 ### Data Cleanup
 
@@ -81,7 +110,7 @@ An obvious outlier was found that I believe was a data entry error. A property i
 ### Model 1 (M1)
 M1 is the baseline model and it was chosen from the variables correlated with sales price of a house.
 
-![](img/corr-heat.pngg)
+![Correlation Heatmap](img/corr-heat.png)
 
 ### Model 2
 
