@@ -1,7 +1,7 @@
 # Home Price Prediciton using Linear Regression
 
 ## Overview
-The project's goal is to predict the sales price of a home in King County, WA based on the features of the home. One way to most common method to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value, denoted as y-hat.
+The project's goal is to predict the sales price of a home in King County, WA based on the features of the home. One of the  most common methods to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value, denoted as y-hat.
 
 ![Linear Equation](img/linear-eq.png)
 
@@ -48,7 +48,7 @@ This project uses the [King County House Sales dataset](https://www.kaggle.com/h
 
 ### Data Cleanup
 
-The median house sold in King County, WA between 2014 to 2015 was for \$450,000. The median house sold was 1910 square feet, 3 bedroom, 2.25 bathrooms, and 47 years old. The home sale price range was \\$78,000 and to \\$7,700,000.
+The median house sold in King County, WA between 2014 to 2015 was for \$450,000. The median house sold was 1910 square feet, 3 bedroom, 2.25 bathrooms, and 47 years old. The home sale price range was $78,000 and to $7,700,000.
 
 #### Missing Data
 
@@ -71,7 +71,7 @@ The data in the `waterfront`, `view`, and `yr_renovated` had `NaN` values. There
     - `sqft_basement` has `?` for missing or unknown values.
 
 ### Encoding Variables
-For regression analysis, the catagorical data needs to be in numerical format so catagorical variables were encoded to to meet this requirement but still maintain their binary, ordinal, and count information.
+For regression analysis, catagorical data needs to be in numerical format so catagorical variables were encoded to to meet this requirement but still maintain their binary, ordinal, and count information.
 
 - `condition`
     - Ordinal categorical variable
@@ -81,7 +81,7 @@ For regression analysis, the catagorical data needs to be in numerical format so
     - Example: `7 Average`
     - Delete the descriptor, keep the number, and convert it to `int` datatype
 - `sqft_basement`
-    - Code to binary catagorical ('No': 0, 'Yes':1)
+    - Code to binary catagorical {'No': 0, 'Yes':1}
     - `?` makes up about 2% of values and the current value of `0` makes up almost 60%
     - Since 2% is a low value I will replace `?` with the mode of `0`
     - If there is a basement (sq.ft > 0) the value will be set to `1`
@@ -114,13 +114,26 @@ M1 is the baseline model and it was chosen from the variables correlated with sa
 
 ![Correlation Heatmap](img/corr-heatmap.png)
 
-### Model 2
+Independent variables correlated with `price` with Pearson's correlation (ρ) greater than 0.6  are `sqft_living`, `sqft_above`, `grade`. As the heatmap shows, `sqft_living` and `sqft_above` are highly correlated with each other (ρ = 0.88) so this will likely create multicollinearity.
 
+### Model 2 (M2)
+M2 uses an automated stepwise regression strategy.  All the variables are fed into the model fitted. The predictor variable with highest p-value is removed if the p-value is greater than 0.05. This is repeated until all the p-values of the predictor variables are less than 0.05. 
+
+M2 has many more features than M1 and utulizes the zipcode dummy variables.
 
 ### Model 3
-
+M3 builds on M1 by adding interaction effects to the main effects. It also removes `sqft_above` as a predictor variable. Interaction effects occur when the effect of one predictor variable depends on the value of another variable. For example, condition of a home may be dependent on the age of the home. There may be a dependency between the square feet of living space and the number of bathrooms.
 
 ## Regression Results
+
+### M1
+The p-values indicate that each of the variables chosen has a statistical significant relationship with the dependent variable, but the r-squared value is low at 0.55. For a predictive model the R-squared needs to be higher. The function of M1 would be:
+
+![Model 1 linear equation](img/M1-eq.png)
+
+For every 1 unit increase in the log transformed living squared feet value, there is a 0.58 mean change in the predicted sale price of the home. There is a 0.22 mean change in the predicted sale price for every unit increase of the grade of a house. Interestingly, the area of the space above the home is penalized. This may be due to multicolinearity between the sqft_living and sqft_above.
+
+The residual plot has a random pattern so there is homoskedasticity. The QQ-plot of the residuals indicate that they are normally distributed.
 
 ## Conclusion
 
