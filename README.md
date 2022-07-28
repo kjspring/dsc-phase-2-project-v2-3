@@ -131,7 +131,7 @@ M3 builds on M1 by adding interaction effects to the main effects. It also remov
 #### Adjusted R-squared
 R-squared is a statistical measurement of how close the observed data are to the regression line. It tells us if the model has can explain the variance seen in the data. Adjusted R-squared is similar to R-squared but it takes into account the number of independent variables used in the model as R-squared has a tendency to increase each time a new variable is added to the model. R-squared range from 0 to 1 with the higher the value, the more the model explains the variance.
 
-![R-squared](img/r-squared.png)
+![R-squared](img/R-squared.png)
 
 #### Prediction interval
 Given specific values of independent variables, a prediction interval is a range a new single observation is likely to be. the smaller the prediction interval, the lower the range the new predicted value may fall, and thus the more confident the predicted value will be.
