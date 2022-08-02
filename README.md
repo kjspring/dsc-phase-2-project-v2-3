@@ -3,7 +3,7 @@
 ## Overview
 The project's goal is to predict the sales price of a home in King County, WA based on the features of the home. One of the  most common methods to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value, denoted as y-hat.
 
-![Linear Equation](img/linear-eq.png)
+![Linear Equation](img/KC_home_sale_map.png)
 
 This project will use a dataset of home sales and design three linear regression models. The models will be compared and the best model will be used for a backend function for a dashboard to predict the sales range for a home.
 
