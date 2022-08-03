@@ -1,4 +1,4 @@
-# Home Price Prediciton using Linear Regression
+# Home Price Prediciton of King County, WA single-family homes using Linear Regression
 
 ## Overview
 The project's goal is to predict the sales price of a home in King County, WA based on the features of the home. One of the  most common methods to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value.
@@ -6,15 +6,24 @@ The project's goal is to predict the sales price of a home in King County, WA ba
 This project will use a dataset of home sales and design three linear regression models. The models will be compared and the best model will be used for a backend function for a dashboard to predict the sales range for a home.
 
 ## Business Problem
-
 Bon Jovi Real Estate Advisors is a residential real estate broker in King County, WA. Many of their clients come to them needing to sell their homes but are unsure of the price to list. The real estate broker wants us to design a model where they can take in the features of their client's home and determine which price to begin listing discussion with their client.
 
 ### Stakeholders
 - President and Managing Director of Bon Jovi Real Estate Advisors
 - Bon Jovi real estate agents that will use the model for price predictions
 
-## The Data
+## Deliverables
+- [Presenatation](https://docs.google.com/presentation/d/1j2AvBxCo7cBzQYDgb4XhTaN4kj6pb4SyR1TKwX8m39I/edit?usp=sharing) to stakeholders
+- Jupyter Notebook
+- GitHub Repository
 
+## Repository Navigation
+- [/img](/img) - contains image files
+- [/data](/data) - house sale data from King County, WA
+- [/license](/license) - license information
+- project_notebook.ipynb - Jupyter notebook
+
+## The Data
 This project uses the [King County House Sales dataset](https://www.kaggle.com/harlfoxem/housesalesprediction), which can be found as  `kc_house_data.csv` in the data folder in this repository. The description of the column names can be found in `column_names.md` in the same folder.
 
 ### King County Home Sales May 2014 - May 2015
