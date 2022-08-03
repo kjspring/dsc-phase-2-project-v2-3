@@ -17,6 +17,7 @@ Bon Jovi Real Estate Advisors is a residential real estate broker in King County
 
 This project uses the [King County House Sales dataset](https://www.kaggle.com/harlfoxem/housesalesprediction), which can be found as  `kc_house_data.csv` in the data folder in this repository. The description of the column names can be found in `column_names.md` in the same folder.
 
+### King County Home Sales May 2014 - May 2015
 ![King County, WA Sales](img/KC_home_sale_map.png)
 
 ## Variable Names and Descriptions for King County Data Set
