@@ -116,7 +116,7 @@ M2 uses an automated stepwise regression strategy.  All the variables are fed in
 
 M2 has many more features than M1 and utulizes the zipcode dummy variables.
 
-### Model 3
+### Model 3 (M3)
 M3 builds on M1 by adding interaction effects to the main effects. It also removes `sqft_above` as a predictor variable because of multicollinearity. Interaction effects occur when the effect of one predictor variable depends on the value of another variable. For example, condition of a home may be dependent on the age of the home. There may be a dependency between the square feet of living space and the number of bathrooms.
 
 ## Statistics used to compare models
