@@ -1,7 +1,7 @@
 # Home Price Prediciton of King County, WA single-family homes using Linear Regression
 
 ## Overview
-The project's goal is to predict the sales price of a home in King County, WA based on the features of the home. One of the  most common methods to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value.
+The project's goal is to predict the sales price of a home in King County, WA based on the features of the home, determine the coefficients to make actionable recommendations on how to improve the sale price of a house, and who to target with marketing. One of the  most common methods to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value.
 
 This project will use a dataset of home sales and design three linear regression models. The models will be compared and the best model will be used for a backend function for a dashboard to predict the sales range for a home.
 
@@ -10,7 +10,7 @@ Bon Jovi Real Estate Advisors is a residential real estate broker in King County
 
 ### Stakeholders
 - President and Managing Director of Bon Jovi Real Estate Advisors
-- Bon Jovi real estate agents that will use the model for price predictions
+- Bon Jovi real estate agents
 
 ## Deliverables
 - [Presenatation](https://docs.google.com/presentation/d/1j2AvBxCo7cBzQYDgb4XhTaN4kj6pb4SyR1TKwX8m39I/edit?usp=sharing) to stakeholders
@@ -141,49 +141,46 @@ RMSE is a measure of the mean error rate of a regression model that penalizes la
 ![Regression results](img/regression-results.png)
 
 ### M1
-The p-values indicate that each of the variables chosen has a statistical significant relationship with the dependent variable, but the r-squared value is low at 0.55. For a predictive model the R-squared needs to be higher. The function of M1 would be:
+The p-values indicate that each of the variables chosen has a statistical significant relationship with the dependent variable. The residual plot has a random pattern and the QQ-plot of the residuals indicate that they are normally distributed. Log transforming `price` has worked and the assumptions are met. There does seem to be a  high level of multicollinearity.
+
+The linear function of M1 is:
 
 ![Model 1 linear equation](img/M1-eq.PNG)
 
-The coefficient for `sqft_living` is 0.58. This means for every 1% increase in square feet of living space in a house, there is a 0.58% increase in sale price. For every 1% increase in the square feet in the above ground area of a house there is a 0.22% reduction in sale price. Interestingly, the area of the space above the home is penalized. This may be due to multicolinearity between the `sqft_living` and `sqft_above`. For every one-unit increase in the grade of the home, there is a 24.6% increase in sales price.
+The coefficient for `grade` of a home is 0.201. This means for every one-unit increase in the `grade` of the home, there is a 22.8% increase in sales price. The coefficient for `sqft_living` is 0.0003. This means for every square foot increase in the living space in a house there is a 0.03% increase in sale price. Lastly, the coefficient for `sqft_above` is 0.0001 so for every square foot increase in the above ground area of a house there is a 0.01% reduction in sale price. Interestingly, the area of the space above the home is penalized in this model. This may be due to multicolinearity between the `sqft_living` and `sqft_above`.  These values are so low as to be insignificant.
+
+$R^2$ value is low at 0.56, RMSE is 0.35, and prediciton interval is 0.68.
 
 ### M2
-R-squared and adjusted R-squared is 0.89 for M2. This is tremendous improvement over M1. There are many more independent variables used in M2 as compared to M1, though. This model used all the independent variables expect for some of the Zipcodes after recoding this variable to dummy variables. Thought there are many variables, the p-values indicate that each of the variables chosen has a statistical significant relationship with the dependent variable. This R-squared score is good for a predictive model.
+There are many more independent variables used in M2 as compared to M1, which may overfit the data. This model used all the independent variables expect for some of the Zip codes after recoding Zip code to dummy variables. `price` is still log transformed. Though there are many variables, the p-values indicate that each of the variables chosen has a statistical significant relationship with the dependent variable, `price`. The residual plot has a random pattern so the homoskedasticity assumption is met. The QQ-plot of the residuals indicate that they are not normally distributed. $R^2$ is 0.88 for M2. This is tremendous improvement over M1. RMSE is 0.19 and the prediction interval is 0.36.
 
-M2 has the lowest predictive intervals. The smaller the predictive interval the more confidence the true sale price is in that region. M1 and M2 had resonably similar prediction intervals and twice the value as M2.
+The coefficient for `condition` for M2 is 0.0587. This means that for ever one-unit increase in condition of a house the sale price is expected to increase on average 6%. Adding an additional full bathroom would increase the sale price of a home by about 3.9%. 
 
-M2 is almost half the RMSE score of M1 and M2 indicating it produces less error between the actual and predicted values. 
-
-The coefficient for `condition` for M2 is 0.0527. This means that for ever increase in one-unit of the condition value there is about a 5% increase in the home sale price. Some of the highest coefficients in in the Zipcode variables. For example, with all other independent variables held constant a home in 98039 would sell for 266% more than Zipcode 98003.
+M2 can tell us which customers to target when marketing. Waterfront properties have a sale price over 59% more homes not on water. A 1-unit increase in the score of a view increases the sale price by about 6%. Some of the highest coefficients with M2 is in the Zip code variables. For example, with all other independent variables held constant a home in 98039 would sell for 228% more than Zip code 98003. The real estate agents should avoid marketing to property owners in 98002, 98003, 98023, 98032, 98042, and 98198 as these sell for much less than other Zip codes in King County, WA as these sell for much less than other Zip codes in King County, WA.
 
 ### M3
 
-R-squared and adjusted R-squared for M3 is 0.63. This is an improvement over M1 but is worse than M2. The interaction effects between some variables does seem to help increase R-squared.
+M3 includes interaction effects along with main effects. The interaction effect of `bathrooms` and `bedrooms` was not included as the p-value was above 0.05, indicating that the interaction with `price` is not statistically significant. Likewise, the variable `bedrooms` is not have a statistically significant main interaction with `price`. The residual plot has a random pattern so there is homoskedasticity. The QQ-plot of the residuals indicate that they are normally distributed. These results show the model meets the assumptions of OLS. There is multicollinearity between some of the variables.
 
-RMSE is similar to M1 and less than M2.
+$R^2$ is 0.62. This is an improvement over M1 but is less than M2. RMSE is 0.32 and the prediction interval is 0.63.
 
-## Recommendations and Next Steps
+The coefficient for `sqft_living` is 0.0003, the same as M1. The coefficient for `condition` with M3 is -0.077 so for each one-unit increase in the condition of a house the sale price is expected to **decrease** about 8% on average.
+
+## Recommendations
+
 ### Summary
-- Our client wants to be able to predict sales price.
+- Our client wants to be able to predict sales price, identify where to market in King County, WA, and how customers can improve their home to increase sale price.
 - Ordinary least squares linear regression was used to create three models.
 - The three models were compared using $R^2$, Prediction Intervals (PI), and Root Mean Squared Error (RMSE).
-- Model 2 (M2) is the best model as it has the best predictive capabilities, R-squared 0.88, low RMSE and PI.
-- M2 could be used to prototype a client dashboard for real estate agents to predict sales price for new data.
-- More data and variables should be collected to improve the model's predictive power.
-- Communicate with client about internal real estate data that can be used to further train the model.
+- Model 2 (M2) is the best model as it has the best predictive capabilities, R-squared of 0.88, low RMSE and PI, though the error is not normally distributed.
 
 ### Actionable Recommendations
-1. M2 could be used for a client dashboard prototype for Bon Jovi real estate agents to predict sales price.
-2. M2 can be used to measure the cost-benefit analysis of making improvements to the home. For example, a one-unit increase in the condition of the home will increase the sale price by about 5%. 
-3. M2 can help Bon Jovi real estate agents locate customers and properties that have the highest sale price potential. For example, homes in Zipcode 98039 sold for over 200% more than homes in Zipcode 98003 so those customers in 98039 likely have a higher sales price.
+1. Improving the condition of a house by one-unit the sale price of a house will increase by about 6%.
+2. Adding an additional full bathroom would increase the sale price of a house by about 3.9%.
+3. Marketing should be focused throughout King County, WA except in Zip codes 98002, 98003, 98023, 98032, 98042, and 98198 as the value of the homes sold in these Zip codes are well under the surrounding Zip codes.
+4. Market real estate services toward owners of waterfront properties as these sell for 59% more than homes not waterfront.
 
 ### Next Steps
 This model could be improved to make better predictions by adding more data additional features, such as crime rate in the geographic location of the home, the zoned public school ranking, and time the house was on the market until it was sold. The GPS coordinates of the sold house could be used to collect the first two of these variables. The Multiple Listing Service may be a source for more recent data and on how long a house was on the market from day of listing to closing date. 
 
-Anther source of data could be in the internal data of our brokerage client. They possibly have data of properties they have sold or bid on, this would include the data of the asking and bidding price of the property.
-
-## Summary
-- Model 2 is the best model to continue with as it has the best predictive capabilities.
-- Model 2 could be used as a prototype for a dashboard the client can use to a range for a asking price.
-- Gather more data and variables to improve the model's predictive power
-- Communicate with client about internal data that can be used to train the model
+Another source of data could be in the internal data of our brokerage client. They possibly have data of properties they have sold or bid on, this would include the data of the asking and bidding price of the property.
