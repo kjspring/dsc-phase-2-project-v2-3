@@ -1,7 +1,9 @@
 # Home Price Prediciton of King County, WA single-family homes using Linear Regression
 
 ## Overview
-The project's goal is to predict the sales price of a home in King County, WA based on the features of the home, determine the coefficients to make actionable recommendations on how to improve the sale price of a house, and who to target with marketing. One of the  most common methods to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value.
+The project's goal is to predict the sales price of a home in King County, WA based on the features of the home, determine the coefficients to make actionable recommendations on how to improve the sale price of a house, and who to target with marketing.
+
+One of the  most common methods to predict continuous values is through linear regression. Linear regression explains the relationship of independent predictor variables to a dependent predicted variable using a linear equation. The linear equation represents the best fit among the data, where given a set of predictor variables the predicted value would be found.  Ordinary least squares linear regression finds this linear equation by minimizing the sum of the squared difference between the actual observed dependent variable and the predicted value.
 
 This project will use a dataset of home sales and design three linear regression models. The models will be compared and the best model will be used for a backend function for a dashboard to predict the sales range for a home.
 
@@ -114,7 +116,7 @@ Independent variables correlated with `price` with Pearson's correlation (r) gre
 ### Model 2 (M2)
 M2 uses an automated stepwise regression strategy.  All the variables are fed into the model and fitted. The predictor variable with highest p-value is removed if the p-value is greater than 0.05. This is repeated until all the p-values of the predictor variables are less than 0.05. 
 
-M2 has many more features than M1 and utulizes the zipcode dummy variables.
+M2 has many more features than M1 and utulizes the Zip code dummy variables.
 
 ### Model 3 (M3)
 M3 builds on M1 by adding interaction effects to the main effects. It also removes `sqft_above` as a predictor variable because of multicollinearity. Interaction effects occur when the effect of one predictor variable depends on the value of another variable. For example, condition of a home may be dependent on the age of the home. There may be a dependency between the square feet of living space and the number of bathrooms.
@@ -175,12 +177,12 @@ The coefficient for `sqft_living` is 0.0003, the same as M1. The coefficient for
 - Model 2 (M2) is the best model as it has the best predictive capabilities, R-squared of 0.88, low RMSE and PI, though the error is not normally distributed.
 
 ### Actionable Recommendations
-1. Improving the condition of a house by one-unit the sale price of a house will increase by about 6%.
+1. Improving the condition of a house by one-unit will increase the sale price  by about 6%.
 2. Adding an additional full bathroom would increase the sale price of a house by about 3.9%.
 3. Marketing should be focused throughout King County, WA except in Zip codes 98002, 98003, 98023, 98032, 98042, and 98198 as the value of the homes sold in these Zip codes are well under the surrounding Zip codes.
 4. Market real estate services toward owners of waterfront properties as these sell for 59% more than homes not waterfront.
 
 ### Next Steps
-This model could be improved to make better predictions by adding more data additional features, such as crime rate in the geographic location of the home, the zoned public school ranking, and time the house was on the market until it was sold. The GPS coordinates of the sold house could be used to collect the first two of these variables. The Multiple Listing Service may be a source for more recent data and on how long a house was on the market from day of listing to closing date. 
+This model could be improved to make better predictions by adding more data and additional variables such as crime rate in the geographic location of the home, the zoned public school ranking, and time the house was on the market until it was sold. The GPS coordinates of the sold house could be used to collect the first two of these variables. The Multiple Listing Service may be a source for more recent data and on how long a house was on the market from day of listing to closing date. 
 
 Another source of data could be in the internal data of our brokerage client. They possibly have data of properties they have sold or bid on, this would include the data of the asking and bidding price of the property.
